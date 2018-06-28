@@ -3,7 +3,7 @@
 $configs = array(
 
     "dbConfig"   => array(
-        "dbType"     => "Mysql",
+        "dbType"     => "MysqliDB",
         "dbHost"     => "localhost",
         "dbUser"     => "root",
         "dbPassword" => "root123",

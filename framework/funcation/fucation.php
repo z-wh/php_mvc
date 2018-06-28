@@ -20,7 +20,7 @@ function C($name, $method)
  */
 function M($name)
 {
-    require_once '../../lib/Model/' . $name . 'Model.class.php';
+    require_once 'lib/Model/' . $name . 'Model.class.php';
     $model = $name . "Model";
     return new $model();
 }
@@ -33,7 +33,7 @@ function M($name)
  */
 function ORG($path, $name, $params = array())
 {
-    require_once '../../lib/ORG/' . $path . $name . 'class.php';
+    require_once 'lib/ORG/' . $path . $name . 'class.php';
     $org = $name . 'class.php';
     $obj = new $org();
     if (!empty($params)) {

@@ -29,37 +29,37 @@ class DB
 
     /**
      * 查找全部数据
-     * @param  [type] $query [description]
+     * @param  [type] $rs [description]
      * @return [type]        [description]
      */
     public static function findAll($sql)
     {
-        $query = self::$db->query($sql);
-        return self::$db->findAll($query);
+        $rs = self::$db->query($sql);
+        return self::$db->findAll($rs);
     }
 
     /**
      * 查找一条数据
-     * @param  [type] $query [description]
+     * @param  [type] $rs [description]
      * @return [type]        [description]
      */
     public static function findOne($sql)
     {
-        $query = self::$db->query($sql);
-        return self::$db->findOne($query);
+        $rs = self::$db->query($sql);
+        return self::$db->findOne($rs);
     }
 
     /**
      * 查找指定行指定字段数据
-     * @param  [type] $query [description]
+     * @param  [type] $rs [description]
      * @param  [type] $row   [description]
      * @param  [type] $field [description]
      * @return [type]        [description]
      */
     public static function findResult($sql, $row = 0, $field = 0)
     {
-        $query = self::$db->query($sql);
-        return self::$db->findResult($query, $row, $field);
+        $rs = self::$db->query($sql);
+        return self::$db->findResult($rs, $row, $field);
     }
 
     /**

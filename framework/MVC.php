@@ -2,7 +2,7 @@
 $currentdir = dirname(__file__);
 require_once $currentdir . '\inculde.list.php';
 foreach ($paths as $path) {
-    require_once $currentdir . $path;
+    require_once $currentdir . '/' . $path;
 }
 
 class MVC
