@@ -3,13 +3,7 @@ class indexController
 {
     public function index()
     {
-        $sql = "select * from imooc_user";
-        // $rs  = DB::findAll($sql);
-        // foreach ($rs as $value) {
-        //     foreach ($value as $k => $v) {
-        //     	echo $k." = ".$v." ";
-        //     }
-        //     echo "<br/>";
-        // }
+        VIEW::assign(array("tittle" => "第一个smarty模板", "author" => "zwh"));
+        VIEW::display("admin/test.html");
     }
 }

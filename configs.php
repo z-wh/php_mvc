@@ -7,12 +7,12 @@ $configs = array(
         "dbHost"     => "localhost",
         "dbUser"     => "root",
         "dbPassword" => "root123",
-        "dbName"     => "shopimooc",
+        "dbName"     => "newsreport",
         "dbCharset"  => "utf8"),
     "viewConfig" => array(
         "left_delimiter"  => "{",
         "right_delimiter" => "}",
         "template_dir"    => "tpl",
-        "compile_dir"     => "tpl_c",
+        "compile_dir"     => "data/tpl_c",
     ),
 );

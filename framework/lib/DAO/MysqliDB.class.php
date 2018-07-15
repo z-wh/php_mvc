@@ -2,28 +2,28 @@
 
 class MysqliDB
 {
-    private static $mysqli;
-    public function err($error)
+    private $mysqli;
+    public function err($info="", $error)
     {
-        die("出现错误，错误信息：" . $error);
+        die($info . " 错误信息：" . $error);
     }
 
     public function connect($dbHost, $dbUser, $dbPassword, $dbName, $dbCharset)
     {
-        self::$mysqli = new mysqli($dbHost, $dbUser, $dbPassword);
-        if (self::$mysqli->connect_errno) {
-            $this->err(self::$mysqli->connect_error);
+        $this->mysqli = new mysqli($dbHost, $dbUser, $dbPassword);
+        if ($this->mysqli->connect_errno) {
+            $this->err("连接失败", $this->mysqli->connect_error);
         }
-        if (!self::$mysqli->select_db($dbName)) {
-            $this->err(self::$mysqli->error);
+        if (!$this->mysqli->select_db($dbName)) {
+            $this->err("择库失败", $this->mysqli->error);
         }
-        self::$mysqli->set_charset($dbCharset);
+        $this->mysqli->set_charset($dbCharset);
     }
 
     public function query($sql)
     {
-        if (!($rs = self::$mysqli->query($sql))) {
-            $this->err(self::$mysqli->error);
+        if (!($rs = $this->mysqli->query($sql))) {
+            $this->err($sql, $this->mysqli->error);
         } else {
             return $rs;
         }
@@ -46,7 +46,7 @@ class MysqliDB
     public function insert($table, $array)
     {
         foreach ($array as $key => $value) {
-            self::$mysqli->real_escape_string($value);
+            $this->mysqli->real_escape_string($value);
             $keyArr[]   = "`" . $key . "`";
             $valueArr[] = "'" . $value . "'";
         }
@@ -54,25 +54,25 @@ class MysqliDB
         $values = implode(",", $valueArr);
         $sql    = "insert into " . $table . " (" . $keys . ") values(" . $values . ")";
         $this->query($sql);
-        return self::$mysqli->insert_id;
+        return $this->mysqli->insert_id;
     }
 
     public function update($table, $array, $where)
     {
         foreach ($array as $key => $value) {
-            self::$mysqli->real_escape_string($value);
+            $this->mysqli->real_escape_string($value);
             $arr[] = "`" . $key . "`='" . $value . "'";
         }
         $arrs = implode(",", $arr);
         $sql  = "update " . $table . " set " . $arrs . " where " . $where;
         $this->query($sql);
-        return self::$mysqli->affected_rows;
+        return $this->mysqli->affected_rows;
     }
 
     public function delete($table, $where)
     {
         $sql = "delete from " . $table . " where " . $where;
         $this->query($sql);
-        return self::$mysqli->affected_rows;
+        return $this->mysqli->affected_rows;
     }
 }
