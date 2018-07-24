@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2018-07-15 03:58:43
+<?php /* Smarty version Smarty-3.1.16, created on 2018-07-23 06:18:26
          compiled from "tpl\admin\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:179915b4ac673e090c1-64538463%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '960134157fa259e4e66125a4a4ef37297a26b6d9' => 
     array (
       0 => 'tpl\\admin\\index.html',
-      1 => 1402835472,
+      1 => 1532326703,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_5b4ac673ec48e0_89703361',
   'variables' => 
   array (
     'newsnum' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.16',
-  'unifunc' => 'content_5b4ac673ec48e0_89703361',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5b4ac673ec48e0_89703361')) {function content_5b4ac673ec48e0_89703361($_smarty_tpl) {?><!doctype html>
 <html>
@@ -29,15 +29,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<meta charset="utf-8"/>
 	<title>后台管理中心</title>
 	
-	<link rel="stylesheet" href="img/css/layout.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="tpl/admin/img/css/layout.css" type="text/css" media="screen" />
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="img/css/ie.css" type="text/css" media="screen" />
 	<script src="img/js/html5.js"></script>
 	<![endif]-->
-	<script src="img/js/jquery-1.5.2.min.js" type="text/javascript"></script>
-	<script src="img/js/hideshow.js" type="text/javascript"></script>
-	<script src="img/js/jquery.tablesorter.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="img/js/jquery.equalHeight.js"></script>
+	<script src="tpl/admin/img/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+	<script src="tpl/admin/img/js/hideshow.js" type="text/javascript"></script>
+	<script src="tpl/admin/img/js/jquery.tablesorter.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="tpl/admin/img/js/jquery.equalHeight.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() 
     	{ 

@@ -3,7 +3,7 @@
 class MysqliDB
 {
     private $mysqli;
-    public function err($info="", $error)
+    public function err($info = "", $error)
     {
         die($info . " 错误信息：" . $error);
     }
@@ -41,6 +41,13 @@ class MysqliDB
     public function findOne($rs)
     {
         return $rs->fetch_array(MYSQLI_ASSOC);
+    }
+
+    public function findResult($rs, $row, $field)
+    {
+        $rs->data_seek($row);
+        $row = $rs->fetch_array();
+        return $row[$field];
     }
 
     public function insert($table, $array)

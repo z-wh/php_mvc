@@ -33,12 +33,21 @@ class AdminController
             $authobj = M("Auth");
             if($this->auth = $authobj->checkAuth($username, $password)){
                 $_SESSION["auth"] = $this->auth;
-                VIEW::display("admin/index.html");
+                $this->showMessage("登陆成功！","admin.php?controller=Admin&method=index");
             }else{
                 $this->showMessage("登陆失败，请重新登陆", "admin.php?controller=Admin&method=login");
             }
         }
 
+    }
+
+    public function index()
+    {
+        $newsobj = M("News");
+        $newsnum = $newsobj->count();
+        $data = array('newsnum' => $newsnum, );
+        VIEW::assign($data);
+        VIEW::display("admin/index.html");
     }
 
     public function showMessage($info, $url)
