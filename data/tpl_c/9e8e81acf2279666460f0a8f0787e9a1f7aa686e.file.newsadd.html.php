@@ -1,4 +1,29 @@
-<!doctype html>
+<?php /* Smarty version Smarty-3.1.16, created on 2018-07-26 09:52:57
+         compiled from "tpl\admin\newsadd.html" */ ?>
+<?php /*%%SmartyHeaderCode:24965b5971a9f23a29-61180349%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '9e8e81acf2279666460f0a8f0787e9a1f7aa686e' => 
+    array (
+      0 => 'tpl\\admin\\newsadd.html',
+      1 => 1532598755,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '24965b5971a9f23a29-61180349',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_5b5971aa1a74b6_00416654',
+  'variables' => 
+  array (
+    'data' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5b5971aa1a74b6_00416654')) {function content_5b5971aa1a74b6_00416654($_smarty_tpl) {?><!doctype html>
 <html>
 <head>
 	<meta charset="utf-8"/>
@@ -68,7 +93,8 @@
 		</div>
 	</section><!-- end of secondary bar -->
 	
-	{include file='admin/leftmenu.html'}
+	<?php echo $_smarty_tpl->getSubTemplate ('admin/leftmenu.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 	
 	<section id="main" class="column">
 		<form id="form1" name="form1" method="post" action="admin.php?controller=Admin&method=newsAdd">
@@ -77,24 +103,29 @@
 					<div class="module_content">
 							<fieldset>
 								<label>标题</label>
-								<input type="text" name="title" value="{$data.title|default:''}">
+								<input type="text" name="title" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['data']->value['title'])===null||$tmp==='' ? '' : $tmp);?>
+">
 							</fieldset>
 							<fieldset>
 								<label>内容</label>
-								<textarea rows="12" name="content">{$data.content|default:''}</textarea>
+								<textarea rows="12" name="content"><?php echo (($tmp = @$_smarty_tpl->tpl_vars['data']->value['content'])===null||$tmp==='' ? '' : $tmp);?>
+</textarea>
 							</fieldset>
 							<fieldset style="width:48%; float:left; margin-right: 3%;">
 								<label>作者</label>
-								<input type="text" name="author" style="width:92%;" value="{$data.author|default:''}">
+								<input type="text" name="author" style="width:92%;" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['data']->value['author'])===null||$tmp==='' ? '' : $tmp);?>
+">
 							</fieldset>
 							<fieldset style="width:48%; float:left;">
 								<label>出处</label>
-								<input type="text" name="from" style="width:92%;" value="{$data.from|default:''}">
+								<input type="text" name="from" style="width:92%;" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['data']->value['from'])===null||$tmp==='' ? '' : $tmp);?>
+">
 							</fieldset><div class="clear"></div>
 					</div>
 				<footer>
 					<div class="submit_link">
-						<input type="hidden" name="id" value="{$data.id|default:''}">
+						<input type="hidden" name="id" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['data']->value['id'])===null||$tmp==='' ? '' : $tmp);?>
+">
 						<input type="submit" name="submit" value="发布" class="alt_btn">
 					</div>
 				</footer>
@@ -106,4 +137,4 @@
 
 </body>
 
-</html>
+</html><?php }} ?>
