@@ -8,7 +8,7 @@ class DB
     /**
      * 数据库连接、择库
      * @param  string $dbTybe 数据库操作函数类型
-     * @param  array $configs 数据库连接参数
+     * @param  array $configs 数据库连接参数构成的数组
      */
     public static function init($configs)
     {
@@ -18,9 +18,9 @@ class DB
     }
 
     /**
-     * sql语名执行函数
+     * 执行sql语句
      * @param  string $sql sql语句
-     * @return [type]      资源标志符
+     * @return resource result      资源结果集
      */
     public static function query($sql)
     {
@@ -28,9 +28,9 @@ class DB
     }
 
     /**
-     * 查找全部数据
-     * @param  [type] $rs [description]
-     * @return [type]        [description]
+     * 查找所有数据
+     * @param  resource result $rs sql查询返回的资源结果集
+     * @return array     资源结果集放入形成的数组
      */
     public static function findAll($sql)
     {
@@ -40,8 +40,8 @@ class DB
 
     /**
      * 查找一条数据
-     * @param  [type] $rs [description]
-     * @return [type]        [description]
+     * @param  resource result $rs 资源结果集
+     * @return array     关联数组
      */
     public static function findOne($sql)
     {
@@ -50,11 +50,11 @@ class DB
     }
 
     /**
-     * 查找指定行指定字段数据
-     * @param  [type] $rs [description]
-     * @param  [type] $row   [description]
-     * @param  [type] $field [description]
-     * @return [type]        [description]
+     * 查找指定字段的数据，多用于查找记录条数
+     * @param  resource result $rs    资源结果集
+     * @param  string $row   数据表的 行
+     * @param  string $field 数据表的 字段
+     * @return string        指定字段取出为字符串
      */
     public static function findResult($sql, $row = 0, $field = 0)
     {
@@ -66,7 +66,7 @@ class DB
      * 插入数据
      * @param  string $table 所要操作的表
      * @param  array $array 要插入的数据的一维数组
-     * @return [type]        [description]
+     * @return int        最近一条插入成功的数据的id
      */
     public static function insert($table, $array)
     {
@@ -76,8 +76,9 @@ class DB
     /**
      * 更新数据
      * @param  string $table 表名
-     * @param  array $array 要更新的数据的一维数组
-     * @return [type]        [description]
+     * @param  array $array 数组形式的数据
+     * @param  string $where 条件语句字符串
+     * @return int        影响行数
      */
     public static function update($table, $array, $where)
     {
@@ -87,8 +88,8 @@ class DB
     /**
      * 删除数据
      * @param  string $table 表名
-     * @param  array $where 条件一维数组
-     * @return [type]        [description]
+     * @param  string $where 条件语句字符串
+     * @return int        影响行数
      */
     public static function delete($table, $where)
     {

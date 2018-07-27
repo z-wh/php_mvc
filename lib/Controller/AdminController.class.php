@@ -1,6 +1,10 @@
 <?php
 class AdminController
 {
+    /**
+     * 用于保存用户信息
+     * @var array
+     */
     private $auth;
 
     /**
@@ -34,9 +38,21 @@ class AdminController
     }
 
     /**
+     * 退出用户登陆
+     * 清空session,清空auth
+     * 跳转到login界面
+     * @return [type] [description]
+     */
+    public function logout()
+    {
+        unset($_SESSION["auth"]);
+        $this->showMessage("您已退出登陆！", "admin.php?controller=Admin&method=login");
+    }
+
+    /**
      * 如果没有提交“用户名”、“密码”则跳转到login界面重新填写
      * 如果有，则进行验证逻辑
-     * 验证成功，跳转到后台管理页面
+     * 验证成功，则将用户信息存入auth并跳转到后台管理页面
      * 失败，跳转到login页面
      * @return [type] [description]
      */
@@ -72,6 +88,12 @@ class AdminController
         VIEW::display("admin/index.html");
     }
 
+    /**
+     * 如果没有submit，并且有id,则先根据id查找新闻数据
+     * 附值到页面，进行展示
+     * 如果有submit动作，则开始添加新闻动作
+     * @return [type] [description]
+     */
     public function newsAdd()
     {
         if (!isset($_POST["submit"])) {
@@ -83,18 +105,25 @@ class AdminController
         }
     }
 
+    /**
+     * 添加或更新新闻操作
+     * 如果没有填“标题”或“内容”，则跳转要求填写
+     * 如果有id字段，则执行更新操作
+     * 如果没有id字段，则执行新增操作
+     * @return [type] [description]
+     */
     public function newsSubmit()
     {
         extract($_POST);
         if (empty($_POST["title"]) || empty($_POST["content"])) {
             $this->showMessage("请先填写标题和内容！", "admin.php?controller=Admin&method=newsAdd");
         }
-        $title  = daddsalashes($_POST["title"]);
-        $content = daddsalashes($_POST["content"]);
-        $author  = daddsalashes($_POST["author"]);
-        $from    = daddsalashes($_POST["from"]);
+        $title   = daddsalashes($title);
+        $content = daddsalashes($content);
+        $author  = daddsalashes($author);
+        $from    = daddsalashes($from);
         $data    = array(
-            'title'   => $title,
+            'title'    => $title,
             'content'  => $content,
             'author'   => $author,
             'from'     => $from,
@@ -103,23 +132,31 @@ class AdminController
         if ($_POST["id"] != "") {
             $newsobj->update($data, intval($_POST["id"]));
             $this->showMessage("更新成功！", "admin.php?controller=Admin&method=newsList");
-        }else{
+        } else {
             $newsobj->insert($data);
             $this->showMessage("添加成功！", "admin.php?controller=Admin&method=newsList");
         }
     }
 
+    /**
+     * 根据id获取新闻内容数据
+     * @return array 数组形式的新闻数据
+     */
     public function getNewsInfo()
     {
         if (isset($_GET["id"])) {
-            $newsobj = M("News");
+            $newsobj     = M("News");
             return $data = $newsobj->findOneById($_GET["id"]);
-        }else{
+        } else {
             return array();
         }
 
     }
 
+    /**
+     * 获取新闻数据到展示列表页
+     * @return [type] [description]
+     */
     public function newsList()
     {
         $data = $this->getNewsList();
@@ -127,10 +164,25 @@ class AdminController
         VIEW::display("admin/newslist.html");
     }
 
+    /**
+     * 按时间倒序排列获取所有新闻数据
+     * @return array 新闻数据数组
+     */
     public function getNewsList()
     {
         $newsobj = M("News");
         return $newsobj->findAllOrderByDateline();
+    }
+
+    /**
+     * 删除新闻
+     * @return [type] [description]
+     */
+    public function newsDel()
+    {
+        $newsobj = M("News");
+        $newsobj->del($_GET["id"]);
+        $this->showMessage("删除成功", "admin.php?controller=Admin&method=newsList");
     }
 
     /**
@@ -144,4 +196,5 @@ class AdminController
         echo "<script>alert('$info');window.location.href='$url'</script>";
         exit;
     }
+
 }

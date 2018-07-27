@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2018-07-26 09:53:25
+<?php /* Smarty version Smarty-3.1.16, created on 2018-07-27 02:21:57
          compiled from "tpl\admin\newslist.html" */ ?>
 <?php /*%%SmartyHeaderCode:74545b599a15ae6881-33460241%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '79b02dc9ee4a4edeacd766122de7f48dbfba6d8a' => 
     array (
       0 => 'tpl\\admin\\newslist.html',
-      1 => 1531634850,
+      1 => 1532658111,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_5b599a15ca3df1_71196412',
   'variables' => 
   array (
     'data' => 0,
     'value' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.16',
-  'unifunc' => 'content_5b599a15ca3df1_71196412',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5b599a15ca3df1_71196412')) {function content_5b599a15ca3df1_71196412($_smarty_tpl) {?><!doctype html>
 <html>
@@ -127,8 +127,8 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 			    				<td><?php echo $_smarty_tpl->tpl_vars['value']->value['author'];?>
 </td> 
 			    				<td><input type="image" src="tpl/admin/img/images/icn_edit.png" title="Edit" onclick="window.location.href='admin.php?controller=admin&method=newsadd&id=<?php echo $_smarty_tpl->tpl_vars['value']->value['id'];?>
-'"><input type="image" src="tpl/admin/img/images/icn_trash.png" title="Trash" onclick="window.location.href='admin.php?controller=admin&method=newsdel&id=<?php echo $_smarty_tpl->tpl_vars['value']->value['id'];?>
-'"></td>
+'" style="cursor: pointer;"><input type="image" src="tpl/admin/img/images/icn_trash.png" title="Trash" onclick="window.location.href='admin.php?controller=admin&method=newsdel&id=<?php echo $_smarty_tpl->tpl_vars['value']->value['id'];?>
+'" style="cursor: pointer;"></td>
 						</tr>
 					<?php }
 if (!$_smarty_tpl->tpl_vars['value']->_loop) {

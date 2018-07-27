@@ -92,7 +92,7 @@
 			    				<td>{$value.id}</td> 
 			    				<td>{$value.title}</td> 
 			    				<td>{$value.author}</td> 
-			    				<td><input type="image" src="tpl/admin/img/images/icn_edit.png" title="Edit" onclick="window.location.href='admin.php?controller=admin&method=newsadd&id={$value.id}'"><input type="image" src="tpl/admin/img/images/icn_trash.png" title="Trash" onclick="window.location.href='admin.php?controller=admin&method=newsdel&id={$value.id}'"></td>
+			    				<td><input type="image" src="tpl/admin/img/images/icn_edit.png" title="Edit" onclick="window.location.href='admin.php?controller=admin&method=newsadd&id={$value.id}'" style="cursor: pointer;"><input type="image" src="tpl/admin/img/images/icn_trash.png" title="Trash" onclick="window.location.href='admin.php?controller=admin&method=newsdel&id={$value.id}'" style="cursor: pointer;"></td>
 						</tr>
 					{foreachelse}
 						<tr>
